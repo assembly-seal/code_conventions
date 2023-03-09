@@ -1,6 +1,11 @@
 # SERVER CODE CONVENTIONS
 
-__**Style Guide**__
+This guide will cover the expectations of code posted and discussed on the server. These conventions are put in place for the benefit of all who read your code. Having a unified system allows code to be more easily understood by others. We ask that you follow this guide as closely as possible. If you think that something in this guide should be changed then please let us know (this does not include stylistic preferences). Thank you for your cooperation!
+
+Style Guide
+-----------
+
+
 
 <ins>Instructions</ins> will be written in the following style: `mnemonic [tab] operand1, [space] operand2`
 The mnemonic will be lowercase and followed by a single tab, the first operand, a comma, a space, and the second operand
