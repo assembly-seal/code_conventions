@@ -34,7 +34,7 @@ In this guide, certain symbols will be used in order to more clearly differentia
 | Symbol | Meaning  |
 |:------:|----------|
 | **→**  | tab      |
-| **᛫**  | space		|
+| **᛫**  | space    |
 | **⏎**  | newline  |
 
 ## Style Guide
@@ -108,16 +108,16 @@ The rules for naming labels are the same as the ones for [data names](#data). La
 _start:
 	mov	rax, 0
 	mov	rdi, 0
-	mov rsi, input
-	mov rdx, 2
+	mov	rsi, input
+	mov	rdx, 2
 	syscall
 
-	cmp byte [input], 48	; "0"
-	jne _start
+	cmp	byte [input], 48	; "0"
+	jne	_start
 
 exit:
-	mov rax, 60
-	xor rdi, rdi
+	mov	rax, 60
+	xor	rdi, rdi
 	syscall
 ```
 
@@ -144,14 +144,14 @@ _start:
 	syscall
 
 	; all instructions for sys_read are grouped
-	mov rax, 0
+	mov	rax, 0
 	mov	rdi, 0
 	mov	rsi, input
-	mov rdx, 2
+	mov	rdx, 2
 	syscall
 	
 	; all instructions for branching based on input are grouped
-	cmp byte [input], 48	; "0"
-	jl some_label
-	jmp some_other_label
+	cmp	byte [input], 48	; "0"
+	jl	some_label
+	jmp	some_other_label
 ```
