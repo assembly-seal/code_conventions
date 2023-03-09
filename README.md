@@ -2,6 +2,14 @@
 
 This guide will cover the expectations of code posted and discussed on the server. These conventions are put in place for the benefit of all who read your code. Having a unified system allows code to be more easily understood by others. We ask that you follow this guide as closely as possible. If you think that something in this guide should be changed then please let us know (this does not include stylistic preferences). Thank you for your cooperation!
 
+Server Focus
+------------
+
+For the time being, this server is centered around x86_64 assembly. Code written and posted should try to be:
+- Written with the x86_64 instruction set
+- Written for Linux
+- Written for the FASM Assembler
+
 Style Guide
 -----------
 
