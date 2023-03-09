@@ -96,7 +96,7 @@ segment readable writeable
 	long_name	db "Hello",0xA	; newline
 
 struc:
-	bit			db "byte"
+	bit		db "byte"
 	piece		db "nibble"
 ```
 
