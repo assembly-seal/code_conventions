@@ -102,7 +102,7 @@ struc:
 
 ### Labels
 
-The rules for naming labels are the same as the ones for [data names](#data). Labels should be left aligned and should be on their own separate line. There should not be a blank line after labels, however there can and often should be one above them.
+The rules for naming labels are the same as the ones for [data names](#data). Labels should be on the very left and on their own separate line. There should not be a blank line after labels, however there can and often should be one above them.
 
 ```asm
 _start:
