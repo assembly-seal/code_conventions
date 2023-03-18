@@ -16,6 +16,7 @@ This guide will cover the expectations of code posted and discussed on the serve
 	- [Instructions](#instructions)
 	- [Grouping](#grouping)
 	- [Comments](#comments)
+3. [Best Practices](#best-practices)
 
 
 ## Introduction
@@ -154,3 +155,9 @@ segment readable executable
 	mov	rdx, 6			; write 6 bytes
 	syscall				; call kernel
 ```
+
+## Best Practices
+
+### Magic numbers
+### Syscalls
+### Comments
