@@ -8,7 +8,6 @@ This guide will cover the expectations of code posted and discussed on the serve
 
 1. [Introduction](#introduction)
 	- [Server Focus](#server-focus)
-	- [Symbol Table](#symbol-table)
 2. [Style Guide](#style-guide)
 	- [Program Order](#program-order)
 	- [Sections](#sections)
@@ -16,6 +15,7 @@ This guide will cover the expectations of code posted and discussed on the serve
 	- [Labels](#labels)
 	- [Instructions](#instructions)
 	- [Grouping](#grouping)
+	- [Comments](#comments)
 
 
 ## Introduction
@@ -26,16 +26,6 @@ For the time being, this server is centered around x86_64 assembly. Code written
 - Written with the x86_64 instruction set
 - Written for Linux
 - Written for the [FASM](https://flatassembler.net/) Assembler
-
-### Symbol Table
-
-In this guide, certain symbols will be used in order to more clearly differentiate white space characters. The following table will show the symbols and what they represent.
-
-| Symbol | Meaning  |
-|:------:|----------|
-| **→**  | tab      |
-| **᛫**  | space    |
-| **⏎**  | newline  |
 
 ## Style Guide
 
@@ -55,30 +45,19 @@ If there is no need for the entry point to be labeled, it can be declared at the
 
 ### Sections
 
-There is no blank line required between the format line and the entry line, nor between includes or definitions. However, there must be a blank line between each section, and there must also be one after each segment is declared. The only white space that should be used for format, entry, includes, segments, etc is a space character. They should not be indented, nor should tabs be in between words.
+There is no blank line required between the format line and the entry line, nor between includes or definitions. There should be a blank line between each section, and also one after each segment is declared. The only whitespace that should be used for format, entry, includes, segments, etc is a space character. They should not be indented, nor should tabs be in between words.
 
 ```asm
-; format᛫ELF64᛫executable 3⏎
-; entry᛫_start⏎
-; ⏎
-format ELF64 executable 3
-entry _start
+format ELF64 executable 3	; format declaration
+entry _start			; entry point declaration
 
-; include᛫'unistd64.inc'⏎
-; ⏎
-include 'unistd64.inc'
+include 'unistd64.inc'		; includes, macros, definitions
 
-; segment᛫readable⏎
-; ⏎
-segment readable
+segment readable		; .rodata
 
-; segment᛫readable᛫writeable⏎
-; ⏎
-segment readable writeable
+segment readable writeable	; .data + .bss
 
-; segment᛫readable᛫executable⏎
-; ⏎
-segment readable executable
+segment readable executable	; .text
 
 _start:
 ```
@@ -90,8 +69,6 @@ Data names should be all lowercase, and written in snake case. Underscores are a
 ```asm
 segment readable writeable
 
-;→name→→→→→→db᛫0
-;→long_name→db᛫"Hello",0xA
 	name		db 0
 	long_name	db "Hello",0xA	; newline
 
@@ -123,11 +100,11 @@ exit:
 
 ### Instructions
 
-Instructions should be offset with one tab, and so should the first operand. The first operand should be followed by a comma, a space, and then the second operand.
+Instructions should be offset with one tab, and so should the first operand. Operands should be separated by a comma and a single space. There should be no extra spacing around operators. Type specifiers should be placed before the first operand, and there should be a single space between them.
 
 ```asm
-;→mov→rax,᛫1
 	mov	rax, 1
+	cmp	byte [addr+1], 1
 ```
 
 ### Grouping
@@ -154,4 +131,26 @@ _start:
 	cmp	byte [input], 48	; "0"
 	jl	some_label
 	jmp	some_other_label
+```
+
+### Comments
+
+Comments are divided into two groups: 'group explanations' and 'line explanations'. (There are also comments which do not explain code, however the stylization of those comments is up to the developer). Group explanations should come right before a code group, with no lines of space in between. They can be multiple lines. Line explanations are a single line comment placed after an instruction. Line explanations should all be aligned to one tab past the longest instruction.
+
+```asm
+segment readable writeable
+
+	name		db 0
+	long_name	db "Hello",0xA	; newline
+
+segment readable executable
+
+	; prints out long_name
+	; save value of rax before printing and restores it afterwards
+	push	rax			; save rax value
+	mov	rax, 1			; sys_write
+	mov	rdi, 1			; stdio
+	mov	rsi, long_name		; write long_name
+	mov	rdx, 6			; write 6 bytes
+	syscall				; call kernel
 ```
