@@ -17,7 +17,9 @@ This guide will cover the expectations of code posted and discussed on the serve
 	- [Grouping](#grouping)
 	- [Comments](#comments)
 3. [Best Practices](#best-practices)
-
+	- [Magic Numbers](#magic-numbers)
+	- [Syscalls](#syscalls)
+	- [Commenting](#commenting)
 
 ## Introduction
 
@@ -159,5 +161,15 @@ segment readable executable
 ## Best Practices
 
 ### Magic numbers
+
+Hex, Octal, and Decimal numbers may be used, however there should never be any magic numbers in your code. A magic number is a numeric literal that is used in code without any explanation of its meaning. Magic numbers are bad practice and can make your code confusing. You should always explain hard coded numbers with a comment.
+
+```asm
+	mov	rax, 48	; ascii code for "0"
+```
+
 ### Syscalls
-### Comments
+
+
+
+### Commenting
