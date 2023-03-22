@@ -170,6 +170,6 @@ Hex, Octal, and Decimal numbers may be used, however there should never be any m
 
 ### Syscalls
 
-
+When specifying a syscall with a value in the `RAX` register, the value should either be a literal with a comment, or a constant value. The latter of the two is preferred. In either case, the naming should comply to the standard set in the [unistd64.inc](https://github.com/assembly-seal/code_conventions/tree/main/unistd64.inc) file.
 
 ### Commenting
