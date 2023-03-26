@@ -133,7 +133,7 @@ _start:
 	; all instructions for branching based on input are grouped
 	cmp	byte [input], 48	; "0"
 	jl	some_label
-	jmp	some_other_label
+	jmp	_start
 ```
 
 ### Comments
